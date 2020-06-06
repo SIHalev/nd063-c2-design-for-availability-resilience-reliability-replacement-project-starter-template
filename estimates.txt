@@ -1,0 +1,10 @@
+Estimates are based for response time of 1 hour and the configured RDS backup every 24 hours
+
+1. Minimum RTO for a single AZ outage
+	RDS configuration use multiple AZ, so the RTO will be up to 5 minutes
+2. Minimum RTO for a single region outage
+	If the "Secondary" is down there will be no problem, but if the "Primary" region is down this will required promotion of the replica. If we don't automate it, this will lead to RTO for up to 4 hours
+3. Minimum RPO for a single AZ outage
+	RDS configuration use multiple AZ, so the RPO will be up to 5 minutes
+4. Minimum RPO for a single region outage
+	If the "Secondary" is down there will be no problem, but if the "Primary" region is down and we don't notice this to promote the replica this could lead to a data lost for up to 24 hours(our backup period)
